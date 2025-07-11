@@ -1,2 +1,19 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class="container">
+  <h2>NEW</h2>
+  <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+    <h3>TITLE</h3>
+    <%= f.text_field :title %>
+    <h3>BODY</h3>
+    <%= f.text_area :body %>
+    <h3>PRICE</h3>
+    <%= f.text_field :price %>
+    <h3>DAY</h3>
+    <%= f.date_field :day %>
+    <h3>STATUS</h3>
+    <%= f.radio_button(:status, "false")  %>
+    <%= f.label(:status, "false") %>
+    <%= f.radio_button(:status, "true")  %>
+    <%= f.label(:status, "true") %><br>
+    <%= f.submit 'CREATE'%>
+  <% end %>
+</div>

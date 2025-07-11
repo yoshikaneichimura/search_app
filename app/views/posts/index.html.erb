@@ -1,2 +1,22 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="container">
+  <h2>INDEX</h2>
+  <table class="table">
+    <tr>
+      <th>TITLE</th>
+      <th>BODY</th>
+      <th>PRICE</th>
+      <th>DAY</th>
+      <th>STATUS</th>
+    </tr>
+    <% @posts .each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= post.price %></td>
+        <td><%= post.day %></td>
+        <td><%= post.status %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
