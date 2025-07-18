@@ -1,2 +1,23 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h2>posts_edit</h2>
+      <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+        <h5>TITLE</h5>
+        <%= f.text_field :title %>
+        <h5>BODY</h5>
+        <%= f.text_area :body %>
+        <h5>PRICE</h5>
+        <%= f.text_field :price %>
+        <h5>DAY</h5>
+        <%= f.date_field :day %>
+        <h5>STATUS</h5>
+        <%= f.radio_button(:status, "false")  %>
+        <%= f.label(:status, "false") %>
+        <%= f.radio_button(:status, "true")  %>
+        <%= f.label(:status, "true") %><br>
+        <%= f.submit "Update" %>
+      <% end %>
+    </div>
+  </div>
+</div>

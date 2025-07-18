@@ -1,2 +1,20 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h2>posts_show</h2>
+      <h5>TITLE</h5>
+      <%= @post.title %>
+      <h5>BODY</h5>
+      <%= @post.body %>
+      <h5>PRICE</h5>
+      <%= @post.price %>
+      <h5>DAY</h5>
+      <%= @post.day %>
+      <h5>STATUS</h5>
+      <%= @post.status %><br>
+      <%= link_to "Edit", edit_post_path(@post.id)%><br>
+      <%= link_to "Delete", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
+</div>
+

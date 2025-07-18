@@ -5,16 +5,14 @@
       <th>TITLE</th>
       <th>BODY</th>
       <th>PRICE</th>
-      <th>DAY</th>
-      <th>STATUS</th>
+      <th></th>
     </tr>
     <% @posts .each do |post| %>
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
         <td><%= post.price %></td>
-        <td><%= post.day %></td>
-        <td><%= post.status %></td>
+        <td><%= link_to "Show", post_path(post.id) %></td>
       </tr>
     <% end %>
   </table>
