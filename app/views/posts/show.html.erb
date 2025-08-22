@@ -11,7 +11,10 @@
       <h5>DAY</h5>
       <%= @post.day %>
       <h5>STATUS</h5>
-      <%= @post.status %><br>
+      <%= @post.status %>
+      <h5>USER</h5>
+      <%= @post.user.name %>
+      <br>
       <%= link_to "Edit", edit_post_path(@post.id)%><br>
       <%= link_to "Delete", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>

@@ -1,2 +1,12 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h2>Users</h2>
+      <% @users.each do |user|%>
+        <%= link_to user_path(user.id) do %>
+          <%= user.name %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

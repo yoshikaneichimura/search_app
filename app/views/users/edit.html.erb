@@ -1,2 +1,14 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h2>User Edit</h2>
+      <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+        <h5>ユーザーネーム</h5>
+        <%= f.text_field :name %>
+        <h5>自己紹介</h5>
+        <%= f.text_area :introduction %>
+        <%= f.submit 'Update'%>
+      <% end %>
+    </div>
+  </div>
+</div>
