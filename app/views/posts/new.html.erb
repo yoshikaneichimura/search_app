@@ -1,5 +1,15 @@
 <div class="container">
   <h2>NEW</h2>
+  
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました。
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @post, url: posts_path, method: :post do |f| %>
     <h3>TITLE</h3>
     <%= f.text_field :title %>

@@ -55,6 +55,11 @@
         </div>
       </nav>
     </header>
+
+    <div class="d-flex justify-content-center">
+      <div><%= flash[:notice]%></div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
