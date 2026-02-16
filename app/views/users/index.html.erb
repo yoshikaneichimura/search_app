@@ -1,12 +1,18 @@
 <div class="container">
   <div class="d-flex justify-content-center">
     <div>
-      <h2>Users</h2>
-      <% @users.each do |user|%>
-        <%= link_to user_path(user.id) do %>
-          <%= user.name %>
+      <h2 class="text-center">Users</h2>
+      <div class="d-flex flex-wrap" style="width: 800px;">
+        <% @users.each do |user| %>
+          <div class="border m-3 p-3" style="width: 200px; height: 100px;">
+            <div class="text-center">
+              <%= link_to user_path(user.id) do %>
+                <%= user.name %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

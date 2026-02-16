@@ -6,4 +6,12 @@ class User < ApplicationRecord
          :trackable
 
   has_many :posts, dependent: :destroy
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name", "introduction"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["post"]
+  end
 end
