@@ -2,8 +2,23 @@
 
  <%= search_form_for @q do |f| %>
   <%= f.label :title_or_body_or_user_name_cont, "検索ワード"%>
-  <%= f.search_field :title_or_body_or_user_name_cont, placeholder: "検索ワード" %>
+  <%= f.search_field :title_or_body_or_user_name_cont, placeholder: "検索ワード" %><br>
+
+  <%= f.label :price, "価格" %>
+  <%= f.number_field :price_gteq %> 以上〜
+  <%= f.number_field :price_lteq %> 以下<br>
+
+  <%= f.label :day, "発売日" %>
+  <%= f.month_field :day_gteq %> 〜
+  <%= f.month_field :day_lteq %><br>
+
+  <%= f.label :status, "販売状況" %>
+  <%= f.radio_button :status_eq, '' %>指定なし
+  <%= f.radio_button :status_eq, true %>販売中
+  <%= f.radio_button :status_eq, false %>廃盤<br>
+
   <%= f.submit '検索'%>
+
  <% end %>
 
   <h2>INDEX</h2>
