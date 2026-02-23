@@ -21,6 +21,14 @@
 
  <% end %>
 
+  <select class="ui fluid dropdown" onChange="location.href=value;">
+    <option value="">並び替え</option>
+    <option value="<%= sort_by_sort_url(sort_url(@q, :created_at), 'created_at+desc') %>">新着順</option>
+    <option value="<%= sort_by_sort_url(sort_url(@q, :created_at), 'created_at+asc') %>">古い順</option>
+    <option value="<%= sort_by_sort_url(sort_url(@q, :price), 'price+desc') %>">価格が高い順</option>
+    <option value="<%= sort_by_sort_url(sort_url(@q, :price), 'price+asc') %>">価格が安い順</option>
+  </select>
+
   <h2>INDEX</h2>
   <table class="table">
     <tr>
