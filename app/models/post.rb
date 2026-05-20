@@ -7,6 +7,10 @@ class Post < ApplicationRecord
   validates :day,    presence: true
   validates :status, inclusion: { in: [true, false] }
 
+  # ransacker :day_year do
+  #   Arel.sql("YEAR(day)")
+  # end
+
   def self.ransackable_attributes(auth_object = nil)
     ["body", "created_at", "day", "id", "price", "status", "title", "update_at", "user_id"]
   end
