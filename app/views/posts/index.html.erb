@@ -1,8 +1,8 @@
 <div class="container">
 
  <%= search_form_for @q do |f| %>
-  <%= f.label :title_or_body_or_user_name_cont, "検索ワード"%>
-  <%= f.search_field :title_or_body_or_user_name_cont, placeholder: "検索ワード" %><br>
+  <%= f.label :title_or_body_or_user_name_cont_all, "検索ワード"%>
+  <%= f.search_field :title_or_body_or_user_name_cont_all, placeholder: "検索ワード" %><br>
 
   <%= f.label :user_name_eq, "ユーザー名" %>
   <%= f.collection_select :user_name_eq, User.all, :name, :name, include_blank: "指定なし" %><br>

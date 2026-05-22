@@ -16,7 +16,18 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+       if params[:q] && params[:q][:title_or_body_or_user_name_cont_all].present?
+         key_words = params[:q][:title_or_body_or_user_name_cont_all].split(/[\p{blank}\s]+/)
+
+         grouping_hash = key_words.reduce({}) do |hash, word|
+           hash.merge(word => {title_or_body_or_user_name_cont: word})
+         end
+       end
+    @q = Post.ransack({
+       combinator: "and",
+       groupings: grouping_hash
+     })
+    @posts = @q.result(distinct: true).includes(:user)
   end
 
   def show
