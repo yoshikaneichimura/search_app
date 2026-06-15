@@ -1,24 +1,98 @@
 <div class="container">
-
-  <%= search_form_for search_form, url: posts_path do |f| %>
-    <%= f.label :title_cont, "検索ワード"%>
-    <%= f.search_field :title_cont, placeholder: "検索ワード" %><br>
-
-    <%= f.label :user_name_cont, "ユーザー名" %>
-    <%= f.collection_select :user_name_cont, User.all, :name, :name, include_blank: "指定なし" %><br>
-
-    <%= f.label :price, "価格" %>
-    <%= f.number_field :price_gteq %> 以上〜
-    <%= f.number_field :price_lteq %> 以下<br>
-
-    <%= f.label :day, "発売日" %>
-    <%= f.date_field :day_gteq %> 〜
-    <%= f.date_field :day_lteq %>
-
-    <%= f.label :status, "販売状況" %>
-    <%= f.radio_button :status_eq, '' %>指定なし
-    <%= f.radio_button :status_eq, true %>販売中
-    <%= f.radio_button :status_eq, false %>廃盤<br>
-    <%= f.submit '検索'%>
+  <div>
+    <%= search_form_for search_form, url: posts_path do |f| %>
+    <form>
+      <div>
+        <div class="form-group w-50">
+          <div>
+            <%= f.label :title_cont, "検索ワード" %>
+          </div>
+          <div class="form-row">
+            <div>
+              <%= f.search_field :title_cont, placeholder: "検索ワード" , class: "form-control" %>
+            </div>
+            <div class="ml-3">
+              <%= f.submit '検索' , class: "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   <% end %>
+  </div>
+  <button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target="#exampleModal">
+    条件を絞って検索
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="example">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          条件を絞って検索
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= search_form_for search_form, url: posts_path do |f| %>
+          <form>
+            <div class="form-group">
+              <label>検索ワード</label>
+              <div class="form-group">
+                <%= f.search_field :title_cont, placeholder: "検索ワード", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>ユーザー名</label>
+              <div>
+                <%= f.collection_select :user_name_cont, User.all, :name, :name, {include_blank: "指定なし"}, class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>価格</label>
+              <div class="form-row">
+                <div class="col">
+                  <%= f.number_field :price_gteq , class: "form-control" %>
+                </div>
+                  以上〜
+                <div class="col">
+                  <%= f.number_field :price_lteq , class: "form-control" %>
+                </div>
+                  以下
+              </div>
+            </div>
+            <div class="form-group">
+              <label>発売日</label>
+              <div class="form-row">
+                <div class="col">
+                  <%= f.date_field :day_gteq , class: "form-control" %>
+                </div>
+                〜
+                <div class="col">
+                  <%= f.date_field :day_lteq , class: "form-control" %>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label>発売状況</label>
+              <div class="form-check form-check-inline">
+                <div class="m-1">
+                  <%= f.radio_button :status_eq, '' , class: "form-check-input" %>指定なし
+                </div>
+                <div class="m-1">
+                  <%= f.radio_button :status_eq, true , class: "form-check-input" %>販売中
+                </div>
+                <div class="">
+                  <%= f.radio_button :status_eq, false , class: "form-check-input"%>廃盤
+                </div>
+              </div>
+            </div>
+            <div>
+              <%= f.submit '検索', class: "btn btn-success" %>
+            </div>
+          </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
