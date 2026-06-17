@@ -26,37 +26,47 @@
     <hr>
 
     <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <nav>
+              <ul class="nav nav-fill">
+                <% if user_signed_in? %>
+                  <li class="nav-item">
+                    <%= link_to "new", new_post_path ,class: "nav-link text-secondary" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "index", posts_path ,class: "nav-link text-secondary" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "users", users_path ,class: "nav-link text-secondary" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "nav-link text-secondary" %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to "新規登録", new_user_registration_path ,class: "nav-link text-secondary" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログイン", new_user_session_path ,class: "nav-link text-secondary" %>
+                  </li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-4">
 
-      <%= render 'posts/search_form' , search_form: @search_form %>
+            <%= render 'posts/search_form' , search_form: @search_form %>
 
-      <nav>
-        <div class="container">
-          <ul>
-            <% if user_signed_in? %>
-              <li>
-                <%= link_to "new", new_post_path %>
-              </li>
-              <li>
-                <%= link_to "index", posts_path %>
-              </li>
+          </div>
+          <div class="col-2">
 
-              <li>
-                <%= link_to "users", users_path %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to "新規登録", new_user_registration_path %>
-              </li>
-              <li>
-                <%= link_to "ログイン", new_user_session_path %>
-              </li>
-            <% end %>
-          </ul>
+            <%= render 'posts/modal' , search_form: @search_form %>
+
+          </div>
         </div>
-      </nav>
+      </div>
     </header>
 
     <div class="d-flex justify-content-center">
