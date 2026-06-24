@@ -1,23 +1,50 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <div>
-      <h2>posts_show</h2>
-      <h5>TITLE</h5>
-      <%= @post.title %>
-      <h5>BODY</h5>
-      <%= @post.body %>
-      <h5>PRICE</h5>
-      <%= @post.price %>
-      <h5>DAY</h5>
-      <%= @post.day %>
-      <h5>STATUS</h5>
-      <%= @post.status %>
-      <h5>USER</h5>
-      <%= @post.user.name %>
-      <br>
-      <%= link_to "Edit", edit_post_path(@post.id)%><br>
-      <%= link_to "Delete", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <div class="d-flex justify-content-center mt-3">
+    <div class="m-3">
+      <div>
+        <div class="m-3">
+          <h5>TITLE</h5>
+          <%= @post.title %>
+        </div>
+        <div class="m-3">
+          <h5>BODY</h5>
+          <%= @post.body %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="m-3">
+            <h5>PRICE</h5>
+            <%= @post.price %>
+          </div>
+          <div class="m-3">
+            <h5>DAY</h5>
+            <%= @post.day %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="m-3">
+            <h5>STATUS</h5>
+            <%= @post.status %>
+          </div>
+          <div class="m-3">
+            <h5>USER</h5>
+            <%= @post.user.name %>
+          </div>
+        </div>
+      </div>
+      <% if @post.user == current_user %>
+      <div class="row">
+        <div class="col">
+          <div class="d-inline m-3">
+            <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-info" %>
+          </div>
+          <div class="d-inline">
+            <%= link_to "Delete", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
-
