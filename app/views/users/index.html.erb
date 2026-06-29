@@ -4,8 +4,8 @@
       <h2 class="text-center">Users</h2>
       <div class="d-flex flex-wrap" style="width: 800px;">
         <% @users.each do |user| %>
-          <div class="border m-3 p-3" style="width: 200px; height: 100px;">
-            <div class="text-center">
+          <div class="d-flex align-items-center d-flex justify-content-center border rounded m-3 p-3" style="width: 200px; height: 100px;">
+            <div>
               <%= link_to user_path(user.id) do %>
                 <%= user.name %>
               <% end %>
